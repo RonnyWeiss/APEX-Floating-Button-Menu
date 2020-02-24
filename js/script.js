@@ -253,19 +253,25 @@ var floatingButtonMenu = (function () {
 
                     div.append(btn);
 
-                    div.on('mouseover click', function (e) {
-                        e.stopPropagation();
-                        div.addClass('is-active');
+                    div.on("mouseover", function () {
                         if (btnBefore) {
                             btnBefore.hide();
                         }
+                        div.addClass("is-active");
                     });
 
-                    div.on('mouseout', function () {
-                        div.removeClass('is-active');
+                    div.on("mouseout", function () {
                         if (btnBefore) {
                             btnBefore.show();
                         }
+                        div.removeClass("is-active");
+                    });
+
+                    btn.on("click", function () {
+                        if (btnBefore) {
+                            btnBefore.toggle();
+                        }
+                        div.toggleClass("is-active");
                     });
 
                     $("body").append(div);
