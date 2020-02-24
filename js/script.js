@@ -183,8 +183,9 @@ var floatingButtonMenu = (function () {
                         li.append(span);
 
                         if (item.ITEM_LINK) {
-                            li.on("click", function () {
+                            li.on("click", function (e) {
                                 util.link(item.ITEM_LINK, configJSON.linkTargetBlank);
+                                e.stopPropagation();
                             });
                         }
 
@@ -256,28 +257,41 @@ var floatingButtonMenu = (function () {
 
                     div.append(btn);
 
-                    div.on("click", function () {
+                    div.on("click", function (e) {
                         if (btnBefore) {
                             btnBefore.toggle();
                         }
                         div.toggleClass("is-active");
+                        e.stopPropagation();
                     });
 
                     if (!util.isTouchDevice()) {
-                        div.on("mouseover", function () {
+                        div.on("mouseover", function (e) {
                             if (btnBefore) {
                                 btnBefore.hide();
                             }
                             div.addClass("is-active");
+                            e.stopPropagation();
+                        });
+
+                        div.on("mouseout", function (e) {
+                            if (btnBefore) {
+                                btnBefore.show();
+                            }
+                            div.removeClass("is-active");
+                            e.stopPropagation();
+                        });
+                    } else {
+                        $(document).on("touchstart click", function (e) {
+                            if (!div.is(e.target) && div.has(e.target).length === 0) {
+                                if (btnBefore) {
+                                    btnBefore.show();
+                                }
+                                div.removeClass("is-active");
+                            }
+                            e.stopPropagation();
                         });
                     }
-
-                    div.on("mouseout", function () {
-                        if (btnBefore) {
-                            btnBefore.show();
-                        }
-                        div.removeClass("is-active");
-                    });
 
                     $("body").append(div);
                     oldDiv.fadeOut(1000, function () {
