@@ -27,7 +27,7 @@ prompt APPLICATION 103428 - Plug-in Samples
 -- Application Export:
 --   Application:     103428
 --   Name:            Plug-in Samples
---   Date and Time:   22:37 Monday February 24, 2020
+--   Date and Time:   22:39 Monday February 24, 2020
 --   Exported By:     RONNYWEISS@OUTLOOK.COM
 --   Flashback:       0
 --   Export Type:     Component Export
@@ -70,7 +70,7 @@ wwv_flow_api.create_plugin(
 '    VR_RESULT         APEX_PLUGIN.T_DYNAMIC_ACTION_RENDER_RESULT;',
 '    VR_REQUIRE_ESCAPE BOOLEAN := TRUE;',
 'BEGIN',
-'    /*APEX_CSS.ADD_FILE(',
+'    APEX_CSS.ADD_FILE(',
 '        P_NAME        => ''afbm.pkgd.min'',',
 '        P_DIRECTORY   => P_PLUGIN.FILE_PREFIX,',
 '        P_VERSION     => NULL,',
@@ -82,7 +82,7 @@ wwv_flow_api.create_plugin(
 '        P_DIRECTORY   => P_PLUGIN.FILE_PREFIX,',
 '        P_VERSION     => NULL,',
 '        P_KEY         => ''afbmjssrc''',
-'    );*/',
+'    );',
 '',
 '    IF',
 '        P_DYNAMIC_ACTION.ATTRIBUTE_05 = ''N''',
