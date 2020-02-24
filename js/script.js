@@ -2,7 +2,7 @@ var floatingButtonMenu = (function () {
     "use strict";
     var scriptVersion = "1.0";
     var util = {
-        version: "1.2.4",
+        version: "1.2.5",
         isDefinedAndNotNull: function (pInput) {
             if (typeof pInput !== "undefined" && pInput !== null) {
                 return true;
@@ -63,6 +63,9 @@ var floatingButtonMenu = (function () {
             } else {
                 return window.location = link;
             }
+        },
+        isTouchDevice: function () {
+            return "ontouchstart" in window;
         }
     };
 
@@ -253,25 +256,27 @@ var floatingButtonMenu = (function () {
 
                     div.append(btn);
 
-                    div.on("mouseover", function () {
+                    div.on("click", function () {
                         if (btnBefore) {
-                            btnBefore.hide();
+                            btnBefore.toggle();
                         }
-                        div.addClass("is-active");
+                        div.toggleClass("is-active");
                     });
+
+                    if (!util.isTouchDevice()) {
+                        div.on("mouseover", function () {
+                            if (btnBefore) {
+                                btnBefore.hide();
+                            }
+                            div.addClass("is-active");
+                        });
+                    }
 
                     div.on("mouseout", function () {
                         if (btnBefore) {
                             btnBefore.show();
                         }
                         div.removeClass("is-active");
-                    });
-
-                    btn.on("click", function () {
-                        if (btnBefore) {
-                            btnBefore.toggle();
-                        }
-                        div.toggleClass("is-active");
                     });
 
                     $("body").append(div);
