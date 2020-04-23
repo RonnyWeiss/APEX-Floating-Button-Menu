@@ -1,6 +1,6 @@
 var floatingButtonMenu = (function () {
     "use strict";
-    var scriptVersion = "1.0";
+    var scriptVersion = "1.0.1";
     var util = {
         version: "1.2.5",
         isDefinedAndNotNull: function (pInput) {
@@ -182,9 +182,18 @@ var floatingButtonMenu = (function () {
 
                         li.append(span);
 
+                        var targetBlank = false;
+
+                        if (item.ITEM_LINK_BLANK == 1 || item.ITEM_LINK_BLANK === true) {
+                            targetBlank = true;
+                        }
+                        if (typeof item.ITEM_LINK_BLANK === undefined || item.ITEM_LINK_BLANK === null) {
+                            targetBlank = configJSON.linkTargetBlank;
+                        }
+
                         if (item.ITEM_LINK) {
                             li.on("click", function (e) {
-                                util.link(item.ITEM_LINK, configJSON.linkTargetBlank);
+                                util.link(item.ITEM_LINK, targetBlank);
                                 e.stopPropagation();
                             });
                         }
