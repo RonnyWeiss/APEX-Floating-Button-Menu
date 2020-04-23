@@ -1,6 +1,6 @@
 {
     "name": "Floating Button Menu",
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "This plugin is used to add a floating button menu to the page. Login for Demo is: user-demo / 123456@",
     "keywords": ["oracle", "apex", "plugin", "dynamic action", "responsive", "menu", "material"],
     "homepage": "https://github.com/RonnyWeiss/APEX-Floating-Button-Menu",
