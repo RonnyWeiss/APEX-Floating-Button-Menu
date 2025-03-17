@@ -28,7 +28,7 @@ prompt APPLICATION 103428 - Ronny's Demo App
 -- Application Export:
 --   Application:     103428
 --   Name:            Ronny's Demo App
---   Date and Time:   20:38 Monday March 17, 2025
+--   Date and Time:   20:48 Monday March 17, 2025
 --   Exported By:     RONNY
 --   Flashback:       0
 --   Export Type:     Component Export
@@ -79,10 +79,11 @@ wwv_flow_api.create_plugin(
 '    );',
 '',
 '   APEX_JAVASCRIPT.ADD_LIBRARY(',
-'        P_NAME        => ''script'',',
-'        P_DIRECTORY   => P_PLUGIN.FILE_PREFIX,',
-'        P_VERSION     => NULL,',
-'        P_KEY         => ''afbmjssrc''',
+'        P_NAME                  => ''script'',',
+'        P_DIRECTORY             => P_PLUGIN.FILE_PREFIX,',
+'        p_check_to_add_minified => true,',
+'        P_VERSION               => NULL,',
+'        P_KEY                   => ''afbmjssrc''',
 '    );',
 '',
 '    IF',
